@@ -23,7 +23,7 @@ if __name__ == '__main__':
         print()
 
         current_folder = os.getcwd()
-        list_dir = os.listdir(current_folder)
+        listdir = os.listdir(current_folder)
 
         choice = input('Выберите пункт меню: ')
 
