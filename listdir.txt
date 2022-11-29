@@ -1,0 +1,2 @@
+files: README.md, listdir.txt, main.py, account.txt, LICENSE, my_bank_account.py, history_purchase.data, games.py, .gitignore
+dirs: venv, .pytest_cache, __pycache__, .idea, .git

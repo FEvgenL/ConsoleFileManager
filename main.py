@@ -12,14 +12,15 @@ if __name__ == '__main__':
         print(' 2. Удалить (файл/папку)')
         print(' 3. Копировать (файл/папку)')
         print(' 4. Просмотр содержимого рабочей директории')
-        print(' 5. Посмотреть только папки')
-        print(' 6. Посмотреть только файлы')
-        print(' 7. Посмотреть информацию об операционной системе')
-        print(' 8. Создатель программы')
-        print(' 9. Играть в викторину')
-        print('10. Мой банковский счёт')
-        print('11. Смена рабочей директории')
-        print('12. Выход')
+        print(' 5. Сохранить содержимое рабочей директории')
+        print(' 6. Посмотреть только папки')
+        print(' 7. Посмотреть только файлы')
+        print(' 8. Посмотреть информацию об операционной системе')
+        print(' 9. Создатель программы')
+        print('10. Играть в викторину')
+        print('11. Мой банковский счёт')
+        print('12. Смена рабочей директории')
+        print('13. Выход')
         print()
 
         current_folder = os.getcwd()
@@ -61,30 +62,40 @@ if __name__ == '__main__':
                 print(item)
             print()
         elif choice == '5':
+            files_lst, dirs_lst = [], []
+            sep = ', '
+            for item in list_dir:
+                if os.path.isfile(os.path.join(current_folder, item)):
+                    files_lst.append(item)
+                else:
+                    dirs_lst.append(item)
+            with open('listdir.txt', 'w') as f:
+                f.write(f'files: {sep.join(files_lst)}\ndirs: {sep.join(dirs_lst)}')
+        elif choice == '6':
             for item in list_dir:
                 if os.path.isdir(os.path.join(current_folder, item)):
                     print(item)
-        elif choice == '6':
+        elif choice == '7':
             for item in list_dir:
                 if os.path.isfile(os.path.join(current_folder, item)):
                     print(item)
-        elif choice == '7':
+        elif choice == '8':
             os_info = list(os.uname())
             print(f'Имя операционной системы: {os_info[0]}')
             print(f'Имя машины в сети: {os_info[1]}')
             print(f'Релиз операционной системы: {os_info[2]}')
             print(f'Версия операционной системы: {os_info[3]}')
             print(f'Идентификатор машины: {os_info[4]}')
-        elif choice == '8':
-            print('Фадеев Евгений Львович')
         elif choice == '9':
-            quiz()
+            print('Фадеев Евгений Львович')
         elif choice == '10':
-            my_bank_account()
+            quiz()
         elif choice == '11':
+            my_bank_account()
+        elif choice == '12':
             dir_ch = input('Введите название новой рабочей директории: ')
             os.chdir(dir_ch)
-        elif choice == '12':
+        elif choice == '13':
             break
         else:
             print('Неверный пункт меню')
