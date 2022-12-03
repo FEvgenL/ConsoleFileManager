@@ -58,17 +58,13 @@ if __name__ == '__main__':
             except FileNotFoundError:
                 print('Указанного файла или папки не существует')
         elif choice == '4':
-            for item in list_dir:
-                print(item)
+            for item in list_dir: print(item)
             print()
         elif choice == '5':
             files_lst, dirs_lst = [], []
             sep = ', '
             for item in list_dir:
-                if os.path.isfile(os.path.join(current_folder, item)):
-                    files_lst.append(item)
-                else:
-                    dirs_lst.append(item)
+                files_lst.append(item) if os.path.isfile(os.path.join(current_folder, item)) else dirs_lst.append(item)
             with open('listdir.txt', 'w') as f:
                 f.write(f'files: {sep.join(files_lst)}\ndirs: {sep.join(dirs_lst)}')
         elif choice == '6':
