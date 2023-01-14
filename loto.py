@@ -15,13 +15,9 @@ class Card:
     @staticmethod
     def creating_card_header(name_card: str) -> str:
         if name_card == 'компьютер':
-            name_part_1 = 'Карточка компьютера'
-            name_part_2 = '-' * ((26 - len(name_part_1)) // 2)
-            card_title = f'{name_part_2}{name_part_1}{name_part_2}'
+            card_title = 'Карточка компьютера'.center(26, '-')
         else:
-            name_part_1 = 'Карточка игрока: '
-            name_part_2 = '-' * ((26 - len(name_part_1) - len(name_card)) // 2)
-            card_title = f'{name_part_2}{name_part_1}{name_card}{name_part_2}'
+            card_title = f'Карточка игрока: {name_card}'.center(26, '-')
         return card_title
 
     def creating_nums_in_card(self):
@@ -60,14 +56,12 @@ class Card:
         print(creating_card_header)
         # Преобразование списка из чисел в список из строк
         for i in range(len(nums)):
-            if 0 < nums[i] < 10:
-                nums_str.append(' ' + str(nums[i]))
-            elif nums[i] == -1:
+            if nums[i] == -1:
                 nums_str.append('  ')
             elif nums[i] == -2:
                 nums_str.append(' -')
             else:
-                nums_str.append(str(nums[i]))
+                nums_str.append(str(nums[i]).rjust(2, ' '))
         # Вывод на экран срок с цифрами карты
         for i in range(3): print(' '.join(nums_str[i * 9: (i + 1) * 9]), sep='\n')
         print('-' * len(creating_card_header))
